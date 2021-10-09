@@ -15,6 +15,7 @@ jobs:
           cp -rlf acmart/* .
           rm -rf acmart
       - run: ls -ahl
+      - run: sudo apt-get install -y texlive-latex-base
       - run: make
       - run: git add .
       - name: Commit files
