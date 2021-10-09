@@ -23,8 +23,8 @@ jobs:
             git config --local user.email "danilo.pianini@unibo.it"
             git config --local user.name "Danilo Pianini disguised as a bot"
             git commit -m "Pull changes from CTAN"
-      #- name: Push changes
-        #uses: ad-m/github-push-action@v0.6.0
-        #with:
-            #github_token: ${{ secrets.GITHUB_TOKEN }}
-            #branch: ${{ github.ref }}
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: ${{ github.ref }}
