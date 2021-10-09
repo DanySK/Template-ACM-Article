@@ -12,7 +12,7 @@ jobs:
       - run: wget https://mirrors.ctan.org/macros/latex/contrib/acmart.zip
       - run: unzip -o acmart.zip
       - run: |
-          cp -rlf acmart .
+          cp -rlf acmart/* .
           rm -rf acmart
       - run: ls -ahl
       - run: make
