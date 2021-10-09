@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Checkout
         uses: danysk/action-checkout@0.1.0
+      - run: rm -r *
       - run: wget https://mirrors.ctan.org/macros/latex/contrib/acmart.zip
       - run: unzip -o acmart.zip
       - run: |
