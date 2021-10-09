@@ -21,6 +21,19 @@
 %% same distribution. (The sources need not necessarily be
 %% in the same archive or directory.)
 %%
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+%%
 %% The first command in your LaTeX source must be the \documentclass command.
 \documentclass[acmtog]{acmart}
 
@@ -139,11 +152,18 @@
 \email{cpalmer@prl.com}
 
 \author{John Smith}
-\affiliation{\institution{The Th{\o}rv{\"a}ld Group}}
+\affiliation{%
+  \institution{The Th{\o}rv{\"a}ld Group}
+  \streetaddress{1 Th{\o}rv{\"a}ld Circle}
+  \city{Hekla}
+  \country{Iceland}}
 \email{jsmith@affiliation.org}
 
 \author{Julius P. Kumquat}
-\affiliation{\institution{The Kumquat Consortium}}
+\affiliation{%
+  \institution{The Kumquat Consortium}
+  \city{New York}
+  \country{USA}}
 \email{jpkumquat@consortium.net}
 
 %%
