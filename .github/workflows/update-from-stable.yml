@@ -1,0 +1,26 @@
+name: Download the latest version from CTAN and push changes
+on:
+  push:
+  fork:
+
+jobs:
+  Download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: danysk/action-checkout@0.1.0
+      - run: wget https://mirrors.ctan.org/macros/latex/contrib/acmart.zip
+      - run: unzip -o acmart.zip
+      - run: mv -r acmart/* .
+      - run: make
+      - run: git add .
+      - name: Commit files
+        run: |
+            git config --local user.email "danilo.pianini@unibo.it"
+            git config --local user.name "Danilo Pianini disguised as a bot"
+            git commit -m "Pull changes from CTAN"
+      #- name: Push changes
+        #uses: ad-m/github-push-action@v0.6.0
+        #with:
+            #github_token: ${{ secrets.GITHUB_TOKEN }}
+            #branch: ${{ github.ref }}
