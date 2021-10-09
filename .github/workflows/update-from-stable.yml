@@ -11,7 +11,9 @@ jobs:
         uses: danysk/action-checkout@0.1.0
       - run: wget https://mirrors.ctan.org/macros/latex/contrib/acmart.zip
       - run: unzip -o acmart.zip
-      - run: mv acmart/* .
+      - run: |
+        cp -rlf acmart .
+        rm -rf acmart
       - run: make
       - run: git add .
       - name: Commit files
