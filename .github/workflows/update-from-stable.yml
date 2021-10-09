@@ -12,8 +12,8 @@ jobs:
       - run: wget https://mirrors.ctan.org/macros/latex/contrib/acmart.zip
       - run: unzip -o acmart.zip
       - run: |
-        cp -rlf acmart .
-        rm -rf acmart
+          cp -rlf acmart .
+          rm -rf acmart
       - run: make
       - run: git add .
       - name: Commit files
