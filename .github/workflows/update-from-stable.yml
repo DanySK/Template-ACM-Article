@@ -20,6 +20,8 @@ jobs:
       - run: ls -ahl
       - run: sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-fonts-extra texlive-xetex
       - run: make
+      - run: latex acmart.ins
+      - run: cp ACM-Reference-Format.bst samples/ACM-Reference-Format.bst
       - run: git add .
       - name: Commit files
         run: |
