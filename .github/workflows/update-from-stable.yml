@@ -12,11 +12,11 @@ jobs:
       - name: Checkout
         uses: danysk/action-checkout@0.1.0
       - run: rm -r *
-      - run: wget https://portalparts.acm.org/hippo/latex_templates/acmart-primary.zip
-      - run: unzip -o acmart.zip
+      - run: wget -U 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36' https://portalparts.acm.org/hippo/latex_templates/acmart-primary.zip
+      - run: unzip -o acmart-primary.zip
       - run: |
-          cp -rlf acmart/* .
-          rm -rf acmart
+          cp -rlf acmart-primary/* .
+          rm -rf acmart-primary
       - run: ls -ahl
       - run: sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-fonts-extra texlive-xetex
       - run: make
