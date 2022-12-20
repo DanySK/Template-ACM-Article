@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: danysk/action-checkout@0.1.0
       - run: rm -r *
-      - run: wget https://mirrors.ctan.org/macros/latex/contrib/acmart.zip
+      - run: wget https://portalparts.acm.org/hippo/latex_templates/acmart-primary.zip
       - run: unzip -o acmart.zip
       - run: |
           cp -rlf acmart/* .
