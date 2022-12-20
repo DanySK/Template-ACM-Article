@@ -27,5 +27,9 @@ samples/sample-*.pdf
 *~
 *.bcf
 *.run.xml
+*.fdb_latexmk
+*.fls
+*.synctex.gz
 samples/ACM-Reference-Format.bst
+
 
