@@ -17,6 +17,7 @@ jobs:
       - run: |
           cp -rlf acmart-primary/* .
           rm -rf acmart-primary
+          rm -rf samples/*i13n*
       - run: ls -ahl
       - run: sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-fonts-extra texlive-xetex
       - run: make
