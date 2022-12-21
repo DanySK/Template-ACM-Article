@@ -19,8 +19,6 @@ jobs:
           rm -rf acmart-primary
           ls -ahl samples/*i13n*
           rm -rf samples/*i13n*
-          ls -ahl samples/*acmengage*
-          rm -rf samples/*acmengage*
           ls -ahl samples/
       - run: ls -ahl
       - run: sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-fonts-extra texlive-xetex
