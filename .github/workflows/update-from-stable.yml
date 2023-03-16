@@ -23,9 +23,9 @@ jobs:
       - run: latex acmart.ins
       - run: cp acmart.cls samples/acmart.cls
       - run: cp ACM-Reference-Format.bst samples/ACM-Reference-Format.bst
+      - run: git checkout HEAD -- renovate.json
       - run: git add .
       - run: git status
-      - run: git reset HEAD -- renovate.json
       - name: Commit files
         run: |
             git config --local user.email "danilo.pianini@unibo.it"
