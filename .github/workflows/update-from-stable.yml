@@ -13,7 +13,6 @@ jobs:
         uses: danysk/action-checkout@0.1.0
       - run: mv renovate.json .renovate.json
       - run: rm -r *
-      - run: mv .renovate.json renovate.json
       - run: wget -U 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36' https://portalparts.acm.org/hippo/latex_templates/acmart-primary.zip
       - run: unzip -o acmart-primary.zip
       - run: |
@@ -25,6 +24,7 @@ jobs:
       - run: latex acmart.ins
       - run: cp acmart.cls samples/acmart.cls
       - run: cp ACM-Reference-Format.bst samples/ACM-Reference-Format.bst
+      - run: mv .renovate.json renovate.json
       - run: git add .
       - name: Commit files
         run: |
