@@ -14,6 +14,13 @@ PDF = $(PACKAGE).pdf acmguide.pdf
 BIBLATEXFILES= $(wildcard *.bbx) $(wildcard *.cbx) $(wildcard *.dbx) $(wildcard *.lbx)
 SAMPLEBIBLATEXFILES=$(patsubst %,samples/%,$(BIBLATEXFILES))
 
+ACMCPSAMPLES= \
+	samples/sample-acmcp-Discussion.pdf \
+	samples/sample-acmcp-Invited.pdf \
+	samples/sample-acmcp-Position.pdf \
+	samples/sample-acmcp-Research.pdf \
+	samples/sample-acmcp-Review.pdf \
+
 all:  ${PDF} ALLSAMPLES
 
 %.pdf:  %.dtx   $(PACKAGE).cls
@@ -103,7 +110,7 @@ samples/sample-lualatex.pdf:  samples/sample-lualatex.tex   samples/$(PACKAGE).c
 	while ( grep -q '^LaTeX Warning: Label(s) may have changed' $(basename $<).log) \
 	  do cd $(dir $@) && lualatex-dev $(notdir $<); done
 
-
+samples/sample-acmcp.pdf: samples/acm-jdslogo.png
 
 .PRECIOUS:  $(PACKAGE).cfg $(PACKAGE).cls
 
@@ -116,6 +123,7 @@ docclean:
 	samples/$(PACKAGE).cls samples/ACM-Reference-Format.bst \
 	samples/*.log samples/*.aux samples/*.out \
 	samples/*.bbl samples/*.blg samples/*.cut \
+	samples/acm-jdslogo.png \
 	samples/*.run.xml samples/*.bcf $(SAMPLEBIBLATEXFILES)
 
 
@@ -144,5 +152,14 @@ distros: all docclean
 	samples/*.bib \
 	acmart.pdf acmguide.pdf  *.cls ACM-Reference-Format.*
 
+acmcp.zip: ${ACMCPSAMPLES} acmart.cls
+	zip $@ $+
+
+samples/sample-acmcp.tex: samples/samples.ins samples/samples.dtx
+	cd samples; pdflatex samples.ins; cd ..
+
+
+samples/sample-acmcp-%.tex: samples/sample-acmcp.tex samples/acm-jdslogo.png
+	sed 's/acmArticleType{Review}/acmArticleType{$*}/' $< > $@
 
 .PHONY: all ALLSAMPLES docclean clean distclean archive zip
